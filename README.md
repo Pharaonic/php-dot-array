@@ -1,7 +1,7 @@
 <p align="center"><a href="https://pharaonic.io" target="_blank"><img src="https://raw.githubusercontent.com/Pharaonic/logos/main/php/dot-array.jpg" width="470"></a></p>
 
 <p align="center">
-<a href="https://github.com/Pharaonic/php-dot-array" target="_blank"><img src="http://img.shields.io/badge/source-pharaonic/php--dot--array-blue.svg?style=flat-square" alt="Source"></a> <a href="https://packagist.org/packages/pharaonic/php-do-array" target="_blank"><img src="https://img.shields.io/packagist/v/pharaonic/php-do-array?style=flat-square" alt="Packagist Version"></a><br> <img src="https://img.shields.io/packagist/dt/pharaonic/php-do-array?style=flat-square" alt="Packagist Downloads"> <img src="http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Source">
+<a href="https://github.com/Pharaonic/php-dot-array" target="_blank"><img src="http://img.shields.io/badge/source-pharaonic/php--dot--array-blue.svg?style=flat-square" alt="Source"></a> <a href="https://packagist.org/packages/pharaonic/php-dot-array" target="_blank"><img src="https://img.shields.io/packagist/v/pharaonic/php-dot-array?style=flat-square" alt="Packagist Version"></a><br> <img src="https://img.shields.io/packagist/dt/pharaonic/php-dot-array?style=flat-square" alt="Packagist Downloads"> <img src="http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Source">
 </p>
 
 
