@@ -1,0 +1,45 @@
+{
+    "name": "pharaonic/php-dot-array",
+    "description": "Access array data quickly/easily using dot-notation and asterisk.",
+    "keywords": [
+        "php",
+        "array",
+        "php array",
+        "php dot array",
+        "dot notation",
+        "asterisk",
+        "pharaonic"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Raggi",
+            "email": "support@pharaonic.io"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=6.5"
+    },
+    "autoload": {
+        "files": [
+            "src/helper.php"
+        ],
+        "psr-4": {
+            "Pharaonic\\DotArray\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pharaonic\\DotArray\\Test\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
