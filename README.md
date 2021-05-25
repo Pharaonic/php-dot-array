@@ -1,7 +1,5 @@
 <p align="center"><a href="https://pharaonic.io" target="_blank"><img src="https://raw.githubusercontent.com/Pharaonic/logos/main/php/dot-array.jpg" width="470"></a></p>
 
-<h3 align="center">Accessing arrays using dot notation and asterisk.</h3>
-
 <p align="center">
   <a href="https://php.net" target="_blank"><img src="https://img.shields.io/static/v1?label=PHP&message=%3E=7.2&color=blue&style=flat-square" alt="PHP Version : >= 7.2"></a>
   <img src="https://img.shields.io/static/v1?label=License&message=MIT&color=brightgreen&style=flat-square" alt="License">
@@ -11,6 +9,9 @@
   <a href="https://packagist.org/packages/pharaonic/php-dot-array" target="_blank"><img src="https://poser.pugx.org/pharaonic/php-dot-array/v" alt="Packagist Version"></a>
   <a href="https://packagist.org/packages/pharaonic/php-dot-array" target="_blank"><img src="https://poser.pugx.org/pharaonic/php-dot-array/downloads" alt="Packagist Downloads"></a>
 </p>
+
+<h3 align="center">Accessing arrays using dot notation and asterisk.</h3>
+<br>
 
 ## Documentation
 
