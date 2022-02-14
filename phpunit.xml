@@ -10,7 +10,7 @@
          stopOnFailure="false"
 >
     <testsuites>
-        <testsuite name="Package Test Suite">
+        <testsuite name="PHP-DOT-ARRAY Test Suite">
             <directory suffix=".php">./tests/</directory>
         </testsuite>
     </testsuites>
@@ -19,7 +19,7 @@
         <whitelist>
             <directory suffix=".php">src</directory>
             <exclude>
-                <directory suffix="include.php">src</directory>
+                <directory suffix=".php">src</directory>
             </exclude>
         </whitelist>
     </filter>

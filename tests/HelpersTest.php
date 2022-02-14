@@ -10,12 +10,7 @@ class HelpersTest extends TestCase
     /** @var DotArray|null $dot Dot Array Object */
     protected $dot;
 
-    /**
-     * Load Dot Array
-     *
-     * @return void
-     */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
