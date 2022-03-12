@@ -15,15 +15,11 @@
 
 ## Documentation
 
-You can find the detailed documentation here in [Dot-Array Documentation](https://pharaonic.io/package/1-general-php/4-dot-array).
+You can find the detailed documentation here in [Dot-Array Documentation](https://pharaonic.io/packages/php/dot-array).
 
 ## Contributing
 
 Thank you for considering contributing to this package! Be one of Pharaonic team.
-
-## Pharaonic Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Pharaonic packages development. If you are interested in becoming a sponsor, please visit the Pharaonic [Liberapay page](https://en.liberapay.com/Pharaonic) or [Patreon page](https://patreon.com/Pharaonic).
 
 ## License
 
