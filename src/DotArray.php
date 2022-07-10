@@ -277,6 +277,7 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      * @param  int|string $key
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($key)
     {
         return $this->has($key);
@@ -298,6 +299,7 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      *
      * @param mixed $value
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($key, $value)
     {
         if (is_null($key)) {
@@ -310,6 +312,7 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
     /**
      * Delete the given key
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($key)
     {
         $this->delete($key);
@@ -338,6 +341,7 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      *
      * @return ArrayIterator
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new ArrayIterator($this->_ITEMS);
