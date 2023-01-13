@@ -289,6 +289,7 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      * @param  int|string $key
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($key)
     {
         return $this->get($key);
@@ -356,6 +357,7 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      *
      * @return array
      */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return $this->_ITEMS;
