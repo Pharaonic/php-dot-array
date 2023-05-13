@@ -114,6 +114,31 @@ class DotArrayTest extends TestCase
     }
 
     /**
+     * Check isNumericKeys method.
+     */
+    public function testIsNumericKeysMethod()
+    {
+        $this->assertTrue($this->dot->isNumericKeys());
+    }
+
+    /**
+     * Check isMultiDimensional method.
+     */
+    public function testIsMultiDimensionalMethod()
+    {
+        $this->assertTrue($this->dot->isMultiDimensional());
+    }
+
+    /**
+     * Check isNulledValues method.
+     */
+    public function testIsNulledValuesMethod()
+    {
+        $this->assertFalse($this->dot->isNulledValues());
+    }
+
+
+    /**
      * Check Json method
      */
     public function testJsonMethod()

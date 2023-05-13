@@ -19,7 +19,7 @@ function dot(array $arr = NULL)
  * @param array $arr array
  * @return bool
  */
-function is_numeric_array(array $arr)
+function array_is_numeric(array $arr)
 {
     return array_keys($arr) === range(0, count($arr) - 1);
 }
@@ -30,7 +30,7 @@ function is_numeric_array(array $arr)
  * @param array $arr array
  * @return bool
  */
-function is_null_array(array $arr)
+function array_is_null(array $arr)
 {
     return empty(array_filter($arr, function ($v) {
         return $v !== null;
@@ -43,7 +43,7 @@ function is_null_array(array $arr)
  * @param array $arr array
  * @return bool
  */
-function is_multidimensional_array(array $arr)
+function array_is_multidimensional(array $arr)
 {
     return count($arr) !== count($arr, COUNT_RECURSIVE);
 }

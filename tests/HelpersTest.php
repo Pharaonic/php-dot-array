@@ -7,7 +7,9 @@ use Pharaonic\DotArray\DotArray;
 
 class HelpersTest extends TestCase
 {
-    /** @var DotArray|null $dot Dot Array Object */
+    /**
+     * @var DotArray|null $dot Dot Array Object
+     */
     protected $dot;
 
     protected function setUp(): void
