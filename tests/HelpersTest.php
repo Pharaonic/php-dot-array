@@ -37,27 +37,27 @@ class HelpersTest extends TestCase
     }
 
     /**
-     * Check is_numeric_array
+     * Check array_is_numeric
      */
     public function testIsNumericArrayFunction()
     {
-        $this->assertTrue(is_numeric_array($this->dot->all()));
+        $this->assertTrue(array_is_numeric($this->dot->all()));
     }
 
     /**
-     * Check is_null_array
+     * Check array_is_null
      */
     public function testIsNullArrayFunction()
     {
         $this->dot->clear();
-        $this->assertTrue(is_null_array($this->dot->all()));
+        $this->assertTrue(array_is_null($this->dot->all()));
     }
 
     /**
-     * Check is_null_array
+     * Check array_is_null
      */
     public function testIsMultiDimensionalArrayFunction()
     {
-        $this->assertTrue(is_multidimensional_array($this->dot->all()));
+        $this->assertTrue(array_is_multidimensional($this->dot->all()));
     }
 }
