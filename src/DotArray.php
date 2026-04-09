@@ -2,7 +2,11 @@
 
 namespace Pharaonic\DotArray;
 
-use Countable, ArrayAccess, ArrayIterator, JsonSerializable, IteratorAggregate;
+use ArrayAccess;
+use ArrayIterator;
+use Countable;
+use IteratorAggregate;
+use JsonSerializable;
 use Traversable;
 
 /**
@@ -12,7 +16,7 @@ use Traversable;
  *
  * @package Pharaonic\DotArray
  * @author Moamen Eltouny <raggigroup@gmail.com>
- * @version 0.0.2
+ * @version 8.5.0
  * @see https://github.com/pharaonic/php-dot-array
  */
 class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSerializable
@@ -25,7 +29,7 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
     protected $_ITEMS = [];
 
     /**
-     * Create an new DoArray instance
+     * Create an new DotArray instance
      *
      * @param mixed $items
      */
@@ -38,9 +42,8 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      * Set Array Items
      *
      * @param   mixed $items
-     * @return  void
      **/
-    public function setArray($items)
+    public function setArray($items): void
     {
         if ($items instanceof static) {
             $this->_ITEMS = $items->all();
@@ -55,29 +58,24 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      * Set Reference Array
      *
      * @param   array $items
-     * @return  void
      **/
-    public function setReference(array &$items)
+    public function setReference(array &$items): void
     {
         $this->_ITEMS = &$items;
     }
 
     /**
      * Get all the stored items
-     *
-     * @return array
      */
-    public function all()
+    public function all(): array
     {
         return $this->_ITEMS;
     }
 
     /**
      * Clear all stored items
-     *
-     * @return void
      */
-    public function clear()
+    public function clear(): void
     {
         $this->_ITEMS = [];
     }
@@ -88,32 +86,41 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      * @param   string|int $keys
      * @return  bool
      */
-    public function has(string|int $key, array $arr = null)
+    public function has(string|int $key, ?array $arr = null)
     {
         $items = $arr ?? $this->_ITEMS;
 
         if (is_int($key) && isset($items[$key])) {
             return true;
-        } elseif (is_string($key)) {
+        }
+
+        if (is_string($key)) {
             $key = $this->prepareKey($key);
+
             for ($index = 0; $index < count($key); $index++) {
                 if (is_array($items)) {
                     if ($key[$index] == '*') {
                         $index++;
                         $next_key = implode('.', array_slice($key, $index));
 
-                        foreach ($items as $item)
-                            if (!$this->has($next_key, $item)) return false;
+                        foreach ($items as $item) {
+                            if (!$this->has($next_key, $item)) {
+                                return false;
+                            }
+                        }
 
                         break;
                     } else {
-                        if (!array_key_exists($key[$index], $items)) return false;
+                        if (!array_key_exists($key[$index], $items)) {
+                            return false;
+                        }
                         $items = $items[$key[$index]];
                     }
                 } else {
                     return false;
                 }
             }
+
             return true;
         }
     }
@@ -125,7 +132,7 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      * @param   array|string|int|float|null $default
      * @return  mixed
      */
-    public function get(string|int $key, mixed $default = null, array $arr = null)
+    public function get(string|int $key, mixed $default = null, ?array $arr = null)
     {
         $items = $arr ?? $this->_ITEMS;
 
@@ -159,10 +166,11 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
 
             // if multidimensional
             if (is_array($items) && array_is_multidimensional($items) && array_is_numeric($items) && $index = $max) {
-                if (isset($items[0][0]) && \is_array($items[0][0]))
+                if (isset($items[0][0]) && \is_array($items[0][0])) {
                     foreach ($items as &$item) {
                         $item = array_merge_recursive(...$item);
                     }
+                }
 
                 $items = array_merge_recursive(...$items);
             }
@@ -180,9 +188,8 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      *
      * @param   string                      $key
      * @param   array|int|float|string|null $value
-     * @return  void
      */
-    public function set(string $key, mixed $value = null, array &$arr = null)
+    public function set(string $key, mixed $value = null, ?array &$arr = null): void
     {
         if (!$arr) {
             $items = &$this->_ITEMS;
@@ -230,9 +237,8 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      * Delete the given key
      *
      * @param   string|int $key
-     * @return  bool
      */
-    public function delete(string|int $key, array &$arr = null): bool
+    public function delete(string|int $key, ?array &$arr = null): bool
     {
         if (!$arr) {
             $items = &$this->_ITEMS;
@@ -243,7 +249,9 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
         if (is_int($key) && isset($items[$key])) {
             unset($items[$key]);
             return true;
-        } elseif (is_string($key)) {
+        }
+
+        if (is_string($key)) {
             $key = $this->prepareKey($key);
             $max = count($key) - 1;
 
@@ -280,9 +288,8 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      * Check if the given key's value is empty
      *
      * @param   string|null $key
-     * @return  bool
      */
-    public function isEmpty(string $key = null): bool
+    public function isEmpty(?string $key = null): bool
     {
         if (!$key) {
             return empty($this->_ITEMS);
@@ -293,8 +300,6 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
 
     /**
      * Check if the given keys are integers from 0 to N
-     *
-     * @return boolean
      */
     public function isNumericKeys(): bool
     {
@@ -303,8 +308,6 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
 
     /**
      * Check if the array is a multidimensional
-     *
-     * @return boolean
      */
     public function isMultidimensional(): bool
     {
@@ -313,8 +316,6 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
 
     /**
      * Check if the array contains Null values only
-     *
-     * @return boolean
      */
     public function isNulledValues(): bool
     {
@@ -326,7 +327,6 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      *
      * @param   int|string|null $key
      * @param   int         $options
-     * @return  string
      */
     public function toJson(int|string|null $key = null, int $options = 0): string
     {
@@ -335,9 +335,8 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
 
     /**
      * Prepare Key to Array of Keys
-     * 
+     *
      * @param  string $key
-     * @return array
      */
     private function prepareKey(string $key): array
     {
@@ -353,7 +352,6 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      * Check if a given key exists
      *
      * @param  int|string $key
-     * @return bool
      */
     public function offsetExists($key): bool
     {
@@ -364,7 +362,6 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      * Return the value of a given key
      *
      * @param  int|string $key
-     * @return mixed
      */
     public function offsetGet($key): mixed
     {
@@ -376,7 +373,6 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      *
      * @param  int|string $key
      * @param  mixed $value
-     * @return void
      */
     public function offsetSet($key, $value): void
     {
@@ -390,9 +386,8 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
 
     /**
      * Delete the given key
-     * 
+     *
      * @param  int|string $key
-     * @return void
      */
     public function offsetUnset($key): void
     {
@@ -403,7 +398,6 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      * Return the number of items in a given key
      *
      * @param  string|null $key
-     * @return  int
      */
     public function count($key = null): int
     {
@@ -412,8 +406,6 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
 
     /**
      * Get an iterator for the stored items
-     *
-     * @return Traversable
      */
     public function getIterator(): Traversable
     {
@@ -422,8 +414,6 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
 
     /**
      * Return items for JSON serialization
-     *
-     * @return mixed
      */
     public function jsonSerialize(): mixed
     {
