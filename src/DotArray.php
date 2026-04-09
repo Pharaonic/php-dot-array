@@ -241,7 +241,7 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
         }
 
         if (is_int($key) && isset($items[$key])) {
-            unset($items[$key[$index]]);
+            unset($items[$key]);
             return true;
         } elseif (is_string($key)) {
             $key = $this->prepareKey($key);
@@ -328,7 +328,7 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      * @param   int         $options
      * @return  string
      */
-    public function toJson(int|string $key = null, int $options = 0): string
+    public function toJson(int|string|null $key = null, int $options = 0): string
     {
         return json_encode($key ? $this->get($key ?? '*') : $this->all(), $options);
     }
