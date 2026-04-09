@@ -1,6 +1,14 @@
 name: build
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  workflow_dispatch:  
+    inputs:
+      php_version:
+        description: 'PHP version to run'
+        required: false
+        default: '8.3'
 
 jobs:
   run:
@@ -8,7 +16,7 @@ jobs:
     strategy:
       matrix:
         operating-system: [ubuntu-latest]
-        php-versions: ['8.0', '8.1', '8.2']
+        php-versions: ['8.0', '8.1', '8.2', '8.3', '8.4', '8.5']
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
 
     steps:

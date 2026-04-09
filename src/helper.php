@@ -8,7 +8,7 @@ use Pharaonic\DotArray\DotArray;
  * @param array|null $arr Original Array
  * @return Raggitech\DotArray\DotArray
  */
-function dot(array $arr = NULL)
+function dot(?array $arr = NULL)
 {
     return new DotArray($arr);
 }
