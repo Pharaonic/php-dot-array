@@ -6,9 +6,9 @@ use Pharaonic\DotArray\DotArray;
  * Create new Dot-Array object
  * 
  * @param array|null $arr Original Array
- * @return Raggitech\DotArray\DotArray
+ * @return Pharaonic\DotArray\DotArray
  */
-function dot(array $arr = NULL)
+function dot(array $arr = [])
 {
     return new DotArray($arr);
 }
