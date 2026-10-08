@@ -115,6 +115,6 @@ class EscapingTest extends TestCase
         $dot = new DotArray(['user' => ['' => ['name' => 'Empty key']]]);
 
         $this->assertSame('Empty key', $dot->get('user..name'));
-        $this->assertFalse((new DotArray(['user' => ['name' => 1]]))->has('user..name'));
+        $this->assertFalse(new DotArray(['user' => ['name' => 1]])->has('user..name'));
     }
 }
