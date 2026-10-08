@@ -6,7 +6,7 @@ Each `8.N.x` line targets exactly one PHP version: `8.0.x` runs on PHP 8.0, `8.1
 
 {release.label} rebuilt the path engine. Every method and helper from 2.x still exists with the same parameters, and `delete()` still returns `bool`, but some results changed. Most of them were bugs.
 
-The full list, with before and after values for every change, is in [UPGRADE.md]({package.githubUrl}/blob/8.2.x/UPGRADE.md).
+The full list, with before and after values for every change, is in [UPGRADE.md]({package.githubUrl}/blob/8.3.x/UPGRADE.md).
 
 ### What Changed
 
