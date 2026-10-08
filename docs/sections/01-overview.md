@@ -20,6 +20,12 @@ Read, write, check and delete values in deeply nested PHP arrays using dot-notat
 
 ### Escaping {icon="pencil"}
 `config.app\.name` reads the key `app.name`; `items.\*` reads the key `*`.
+
+### Reference Mode {icon="switch"}
+`setReference($array)` writes every change straight to your own array.
+
+### ArrayAccess & Countable {icon="lines"}
+`$dot['user.name']`, `isset()`, `unset()`, `count()`, iteration and `json_encode()` all work.
 :::
 
 :::info Quick Tip

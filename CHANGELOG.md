@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 8.0.1 - Unreleased
+
+### Changed
+
+- The documentation overview shows six feature cards, adding Reference Mode and ArrayAccess & Countable.
+
 ## 8.0.0 - 2026-10-08
 
 Rebuilt the path engine. `get()`, `has()`, `set()`, `delete()` and `pull()` now share one path parser and one set of wildcard matching rules, documented in [`docs/`](docs/sections) and on [pharaonic.dev](https://pharaonic.dev/packages/php/dot-array).
