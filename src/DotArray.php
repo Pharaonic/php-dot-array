@@ -519,6 +519,7 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      *
      * @param  int|string $key
      */
+    #[\Override]
     public function offsetExists($key): bool
     {
         return $this->has($key);
@@ -529,6 +530,7 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      *
      * @param  int|string $key
      */
+    #[\Override]
     public function offsetGet($key): mixed
     {
         return $this->get($key);
@@ -540,6 +542,7 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      * @param  int|string|null $key
      * @param  mixed $value
      */
+    #[\Override]
     public function offsetSet($key, $value): void
     {
         if ($key === null) {
@@ -555,6 +558,7 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      *
      * @param  int|string $key
      */
+    #[\Override]
     public function offsetUnset($key): void
     {
         $this->delete($key);
@@ -567,6 +571,7 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      *
      * @param  int|string|null $key
      */
+    #[\Override]
     public function count($key = null): int
     {
         $value = $key === null ? $this->_ITEMS : $this->get($key);
@@ -579,6 +584,7 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
      *
      * @return ArrayIterator<array-key, mixed>
      */
+    #[\Override]
     public function getIterator(): Traversable
     {
         return new ArrayIterator($this->_ITEMS);
@@ -587,6 +593,7 @@ class DotArray implements ArrayAccess, Countable, IteratorAggregate, JsonSeriali
     /**
      * Return items for JSON serialization
      */
+    #[\Override]
     public function jsonSerialize(): mixed
     {
         return $this->_ITEMS;
