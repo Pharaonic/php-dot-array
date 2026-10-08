@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ruleset name="Pharaonic PHP Dot Array">
+    <description>PSR-12 coding standard for pharaonic/php-dot-array.</description>
+    <file>src</file>
+    <file>tests</file>
+    <arg name="colors"/>
+    <arg name="extensions" value="php"/>
+    <rule ref="PSR12">
+        <!-- $_ITEMS is part of the public extension surface (protected) since 1.0. -->
+        <exclude name="PSR2.Classes.PropertyDeclaration.Underscore"/>
+    </rule>
+    <rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
+        <!-- helper.php declares global functions guarded by function_exists(). -->
+        <exclude-pattern>src/helper.php</exclude-pattern>
+    </rule>
+</ruleset>
