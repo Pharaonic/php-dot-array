@@ -1,8 +1,12 @@
+## Between 8.x Release Lines
+
+Each `8.N.x` line targets exactly one PHP version: `8.0.x` runs on PHP 8.0, `8.1.x` on PHP 8.1, and so on. Moving from one 8.x line to another never changes the public API or results, so no code changes are needed. Composer picks the line that matches your PHP version.
+
 ## Upgrading from 2.x
 
 {release.label} rebuilt the path engine. Every method and helper from 2.x still exists with the same parameters, and `delete()` still returns `bool`, but some results changed. Most of them were bugs.
 
-The full list, with before and after values for every change, is in [UPGRADE.md]({package.githubUrl}/blob/8.0.x/UPGRADE.md).
+The full list, with before and after values for every change, is in [UPGRADE.md]({package.githubUrl}/blob/8.1.x/UPGRADE.md).
 
 ### What Changed
 
