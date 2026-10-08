@@ -12,6 +12,7 @@ The `8.5.x` line now runs the rebuilt 8.x path engine, with results identical to
 - `dot()` accepts `null` and another `DotArray` again (`8.5.0` accepted arrays only).
 - Requires `pharaonic/php-readable` `~8.5.0`, its PHP 8.5 line.
 - PHPStan analyses against PHP 8.5, and CI falls back to PHP 8.5 on branches that are not an `8.N.x` line.
+- PHPStan `^2.1.22` is required for development, the first release that analyses against PHP 8.5.
 
 ## 8.4.1 - 2026-10-08
 
