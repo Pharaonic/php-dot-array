@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## 8.2.0 - Unreleased
+## 8.2.0 - 2026-10-08
 
 The `8.2.x` line targets PHP 8.2. Results are identical to `8.1.0`. See [UPGRADE.md](UPGRADE.md#from-81-to-82).
 
