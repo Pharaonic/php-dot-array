@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## 8.5.1 - 2026-10-08
+
+The `8.5.x` line now runs the rebuilt 8.x path engine, with results identical to `8.4.1`. **`8.5.0` still had the 2.x engine, so this patch changes results for `8.5.0` users**: every change listed under [8.0.0](#800---2026-10-08) applies. Read [UPGRADE.md](UPGRADE.md#from-850-to-851) before updating.
+
+### Changed
+
+- **Requires PHP `>=8.5 <8.6`** (`8.5.0` allowed `^8.5`). Use the `8.4.x` line on PHP 8.4.
+- `dot()` accepts `null` and another `DotArray` again (`8.5.0` accepted arrays only).
+- Requires `pharaonic/php-readable` `~8.5.0`, its PHP 8.5 line.
+- PHPStan analyses against PHP 8.5, and CI falls back to PHP 8.5 on branches that are not an `8.N.x` line.
+- PHPStan `^2.1.22` is required for development, the first release that analyses against PHP 8.5.
+
 ## 8.4.1 - 2026-10-08
 
 The `8.4.x` line now runs the rebuilt 8.x path engine, with results identical to `8.3.0`. **`8.4.0` still had the 2.x engine, so this patch changes results for `8.4.0` users**: every change listed under [8.0.0](#800---2026-10-08) applies. Read [UPGRADE.md](UPGRADE.md#from-840-to-841) before updating.

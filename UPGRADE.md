@@ -8,25 +8,26 @@ To upgrade, install the line that matches your PHP version. Composer picks it fo
 
 | Line    | PHP | `pharaonic/php-readable` |
 |---------|-----|--------------------------|
+| `8.5.x` | 8.5 | `~8.5.0`                 |
 | `8.4.x` | 8.4 | `~8.4.0`                 |
 | `8.3.x` | 8.3 | `~8.3.0`                 |
 | `8.2.x` | 8.2 | `~8.2.0`                 |
 | `8.1.x` | 8.1 | `~8.1.0`                 |
 | `8.0.x` | 8.0 | `~8.0.1`                 |
 
-## From 8.4.0 to 8.4.1
+## From 8.5.0 to 8.5.1
 
-⚠️ `8.4.0` was released before the 8.x rebuild and still ran the 2.x engine. `8.4.1` is a patch release, so `composer update` installs it automatically, but it brings every result change listed in [From 2.x to 8.0](#from-2x-to-80). The API is the same. Review that section before updating, or pin `8.4.0` until you have:
+⚠️ `8.5.0` was released before the 8.x rebuild and still ran the 2.x engine. `8.5.1` is a patch release, so `composer update` installs it automatically, but it brings every result change listed in [From 2.x to 8.0](#from-2x-to-80). The API is the same. Review that section before updating, or pin `8.5.0` until you have:
 
 ```bash
-composer require pharaonic/php-dot-array:8.4.0
+composer require pharaonic/php-dot-array:8.5.0
 ```
 
-Differences from `8.4.0` that are not in the 2.x list:
+Differences from `8.5.0` that are not in the 2.x list:
 
-- `8.4.0` already deleted integer keys correctly, so section 10's `delete($int)` fix doesn't apply.
-- `dot()` accepts `null` and another `DotArray` again; `8.4.0` accepted arrays only.
-- PHP `>=8.4 <8.5` instead of `^8.4`. On PHP 8.5, Composer installs the `8.5.x` line.
+- `8.5.0` already deleted integer keys correctly, so section 10's `delete($int)` fix doesn't apply.
+- `dot()` accepts `null` and another `DotArray` again; `8.5.0` accepted arrays only.
+- PHP `>=8.5 <8.6` instead of `^8.5`.
 
 ## From 2.x to 8.0
 
