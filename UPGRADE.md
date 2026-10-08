@@ -1,5 +1,16 @@
 # Upgrade Guide
 
+## From 8.0 to 8.1
+
+Version 8.1 targets PHP 8.1. The public API and results are unchanged.
+
+### Requirements
+
+- PHP `>=8.1 <8.2`. Stay on `8.0.x` while you run PHP 8.0.
+- `pharaonic/php-readable` `~8.1.0` (installed automatically).
+
+No code changes are needed.
+
 ## From 2.x to 8.0
 
 Version 8.0 rebuilds the path engine for PHP 8.0. The public API is unchanged: every method and helper still exists with the same parameters, and `delete()` still returns `bool`. What changed is the result of some calls, mostly edge cases that were bugs, but some of them could be relied on.

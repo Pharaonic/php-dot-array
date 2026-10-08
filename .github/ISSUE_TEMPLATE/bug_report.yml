@@ -6,14 +6,14 @@ body:
     id: package-version
     attributes:
       label: Package version
-      placeholder: '8.0.0'
+      placeholder: '8.1.0'
     validations:
       required: true
   - type: input
     id: php-version
     attributes:
       label: PHP version
-      placeholder: '8.0'
+      placeholder: '8.1'
     validations:
       required: true
   - type: textarea

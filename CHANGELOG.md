@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## 8.1.0 - Unreleased
+
+The `8.1.x` line targets PHP 8.1. Results are identical to `8.0.0`. See [UPGRADE.md](UPGRADE.md#from-80-to-81).
+
+### Changed
+
+- **Requires PHP `>=8.1 <8.2`.** Use the `8.0.x` line on PHP 8.0.
+- Requires `pharaonic/php-readable` `~8.1.0`, its PHP 8.1 line.
+- PHPStan analyses against PHP 8.1, and CI falls back to PHP 8.1 on branches that are not an `8.N.x` line.
+
 ## 8.0.0 - 2026-10-08
 
 Rebuilt the path engine. `get()`, `has()`, `set()`, `delete()` and `pull()` now share one path parser and one set of wildcard matching rules, documented in [`docs/`](docs/sections) and on [pharaonic.dev](https://pharaonic.dev/packages/php/dot-array).
