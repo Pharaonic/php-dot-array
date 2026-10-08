@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 8.1.1 - Unreleased
+
+### Changed
+
+- The documentation overview shows six feature cards, adding Reference Mode and ArrayAccess & Countable.
+
 ## 8.1.0 - 2026-10-08
 
 The `8.1.x` line targets PHP 8.1. Results are identical to `8.0.0`. See [UPGRADE.md](UPGRADE.md#from-80-to-81).
