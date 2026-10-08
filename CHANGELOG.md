@@ -12,7 +12,7 @@ The `8.4.x` line now runs the rebuilt 8.x path engine, with results identical to
 - Requires `pharaonic/php-readable` `~8.4.0`, its PHP 8.4 line.
 - `dot()` accepts `null` and another `DotArray` again (`8.4.0` accepted arrays only).
 - The test suite runs on PHPUnit 12, and deprecations still fail the run (`failOnDeprecation`).
-- PHPStan `^2.0` is required for development, since 1.x cannot parse PHP 8.4 syntax.
+- PHPStan `^2.1.18` is required for development: 1.x cannot parse PHP 8.4 syntax, and earlier 2.x releases lose track of the path parser's list type.
 - The test suite calls methods on new instances without wrapping parentheses (`new DotArray([...])->get(...)`).
 - PHPStan analyses against PHP 8.4, and CI falls back to PHP 8.4 on branches that are not an `8.N.x` line.
 
