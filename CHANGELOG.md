@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## 8.4.1 - 2026-10-08
+
+The `8.4.x` line now runs the rebuilt 8.x path engine, with results identical to `8.3.0`. **`8.4.0` still had the 2.x engine, so this patch changes results for `8.4.0` users**: every change listed under [8.0.0](#800---2026-10-08) applies. Read [UPGRADE.md](UPGRADE.md#from-840-to-841) before updating.
+
+### Changed
+
+- **Requires PHP `>=8.4 <8.5`** (`8.4.0` allowed `^8.4`). Use the `8.3.x` line on PHP 8.3 and the `8.5.x` line on PHP 8.5.
+- Requires `pharaonic/php-readable` `~8.4.0`, its PHP 8.4 line.
+- `dot()` accepts `null` and another `DotArray` again (`8.4.0` accepted arrays only).
+- The test suite runs on PHPUnit 12, and deprecations still fail the run (`failOnDeprecation`).
+- PHPStan `^2.1.18` is required for development: 1.x cannot parse PHP 8.4 syntax, and earlier 2.x releases lose track of the path parser's list type.
+- The test suite calls methods on new instances without wrapping parentheses (`new DotArray([...])->get(...)`).
+- PHPStan analyses against PHP 8.4, and CI falls back to PHP 8.4 on branches that are not an `8.N.x` line.
+
 ## 8.3.0 - 2026-10-08
 
 The `8.3.x` line targets PHP 8.3. Results are identical to `8.2.0`. See [UPGRADE.md](UPGRADE.md#from-82-to-83).

@@ -20,7 +20,7 @@ class ReferenceTest extends TestCase
     public function testSetWritesToTheReferencedArray(): void
     {
         $array = ['user' => ['name' => 'Old']];
-        (new DotArray())->setReference($array)->set('user.name', 'New')->set('user.role', 'admin');
+        new DotArray()->setReference($array)->set('user.name', 'New')->set('user.role', 'admin');
 
         $this->assertSame(['user' => ['name' => 'New', 'role' => 'admin']], $array);
     }
@@ -28,7 +28,7 @@ class ReferenceTest extends TestCase
     public function testExternalChangesAreVisible(): void
     {
         $array = ['a' => 1];
-        $dot = (new DotArray())->setReference($array);
+        $dot = new DotArray()->setReference($array);
         $array['b'] = 2;
 
         $this->assertSame(2, $dot->get('b'));
@@ -37,7 +37,7 @@ class ReferenceTest extends TestCase
     public function testDeleteRemovesFromTheReferencedArray(): void
     {
         $array = ['user' => ['name' => 'Raggi', 'password' => 'secret']];
-        (new DotArray())->setReference($array)->delete('user.password');
+        new DotArray()->setReference($array)->delete('user.password');
 
         $this->assertSame(['user' => ['name' => 'Raggi']], $array);
     }
@@ -45,7 +45,7 @@ class ReferenceTest extends TestCase
     public function testPullRemovesFromTheReferencedArray(): void
     {
         $array = ['token' => 'abc', 'keep' => 1];
-        $dot = (new DotArray())->setReference($array);
+        $dot = new DotArray()->setReference($array);
 
         $this->assertSame('abc', $dot->pull('token'));
         $this->assertSame(['keep' => 1], $array);
@@ -54,7 +54,7 @@ class ReferenceTest extends TestCase
     public function testClearEmptiesTheReferencedArray(): void
     {
         $array = ['a' => 1];
-        (new DotArray())->setReference($array)->clear();
+        new DotArray()->setReference($array)->clear();
 
         $this->assertSame([], $array);
     }
@@ -62,7 +62,7 @@ class ReferenceTest extends TestCase
     public function testSetArrayReplacesTheReferencedArray(): void
     {
         $array = ['a' => 1];
-        (new DotArray())->setReference($array)->setArray(['b' => 2]);
+        new DotArray()->setReference($array)->setArray(['b' => 2]);
 
         $this->assertSame(['b' => 2], $array);
     }
@@ -71,7 +71,7 @@ class ReferenceTest extends TestCase
     {
         $array = ['users' => [['name' => 'A', 'password' => 'x'], ['name' => 'B', 'password' => 'y']]];
 
-        (new DotArray())->setReference($array)
+        new DotArray()->setReference($array)
             ->set('users.*.active', true)
             ->delete('users.*.password');
 
@@ -83,7 +83,7 @@ class ReferenceTest extends TestCase
     public function testArrayAccessWritesToTheReferencedArray(): void
     {
         $array = ['a' => ['b' => 1]];
-        $dot = (new DotArray())->setReference($array);
+        $dot = new DotArray()->setReference($array);
 
         $dot['a.c'] = 2;
         $dot[] = 'appended';
@@ -95,7 +95,7 @@ class ReferenceTest extends TestCase
     public function testReadsDoNotModifyTheReferencedArray(): void
     {
         $array = ['users' => [['name' => 'A']]];
-        $dot = (new DotArray())->setReference($array);
+        $dot = new DotArray()->setReference($array);
 
         $dot->get('users.*.missing.deep');
         $dot->has('users.*.missing');

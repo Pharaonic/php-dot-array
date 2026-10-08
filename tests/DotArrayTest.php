@@ -205,10 +205,10 @@ class DotArrayTest extends TestCase
         $object = new stdClass();
         $object->a = 1;
 
-        $this->assertSame([], (new DotArray())->all());
-        $this->assertSame([], (new DotArray(null))->all());
-        $this->assertSame(['a' => 1], (new DotArray($object))->all());
-        $this->assertSame(['x'], (new DotArray('x'))->all());
+        $this->assertSame([], new DotArray()->all());
+        $this->assertSame([], new DotArray(null)->all());
+        $this->assertSame(['a' => 1], new DotArray($object)->all());
+        $this->assertSame(['x'], new DotArray('x')->all());
     }
 
     public function testSetArrayReplacesItemsAndIsFluent(): void
@@ -513,7 +513,7 @@ class DotArrayTest extends TestCase
         $this->assertTrue($dot->isEmpty('b'));
         $this->assertFalse($dot->isEmpty('c'));
         $this->assertTrue($dot->isEmpty('0'));
-        $this->assertTrue((new DotArray())->isEmpty());
+        $this->assertTrue(new DotArray()->isEmpty());
     }
 
     public function testCount(): void

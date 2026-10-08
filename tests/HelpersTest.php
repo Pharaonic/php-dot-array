@@ -87,6 +87,6 @@ class HelpersTest extends TestCase
 
         $empty = new DotArray(['a' => []]);
         $this->assertTrue($empty->isMultidimensional());
-        $this->assertTrue((new DotArray())->isNumericKeys());
+        $this->assertTrue(new DotArray()->isNumericKeys());
     }
 }

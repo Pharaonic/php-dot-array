@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.6/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
+         cacheDirectory=".phpunit.cache"
          colors="true"
          failOnRisky="true"
          failOnWarning="true"
-         convertDeprecationsToExceptions="true">
+         failOnDeprecation="true"
+         failOnPhpunitDeprecation="true"
+         displayDetailsOnTestsThatTriggerDeprecations="true"
+         displayDetailsOnPhpunitDeprecations="true">
   <testsuites>
     <testsuite name="PHP-DOT-ARRAY Test Suite">
       <directory>tests</directory>
     </testsuite>
   </testsuites>
-  <coverage processUncoveredFiles="true">
+  <source>
     <include>
       <directory suffix=".php">src</directory>
     </include>
-  </coverage>
+  </source>
 </phpunit>
