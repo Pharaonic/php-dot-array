@@ -1,37 +1,32 @@
 # Upgrade Guide
 
-## From 8.2 to 8.3
+## Between 8.x release lines
 
-Version 8.3 targets PHP 8.3. The public API and results are unchanged.
+Each `8.N.x` line targets exactly one PHP version: `8.0.x` runs on PHP 8.0, `8.1.x` on PHP 8.1, and so on. Moving from one 8.x line to another never changes the public API or results, so no code changes are needed.
 
-### Requirements
+To upgrade, install the line that matches your PHP version. Composer picks it for you: `composer require pharaonic/php-dot-array` resolves the latest line your PHP version supports.
 
-- PHP `>=8.3 <8.4`. Stay on `8.2.x` while you run PHP 8.2.
-- `pharaonic/php-readable` `~8.3.0` (installed automatically).
+| Line    | PHP | `pharaonic/php-readable` |
+|---------|-----|--------------------------|
+| `8.4.x` | 8.4 | `~8.4.0`                 |
+| `8.3.x` | 8.3 | `~8.3.0`                 |
+| `8.2.x` | 8.2 | `~8.2.0`                 |
+| `8.1.x` | 8.1 | `~8.1.0`                 |
+| `8.0.x` | 8.0 | `~8.0.1`                 |
 
-No code changes are needed.
+## From 8.4.0 to 8.4.1
 
-## From 8.1 to 8.2
+⚠️ `8.4.0` was released before the 8.x rebuild and still ran the 2.x engine. `8.4.1` is a patch release, so `composer update` installs it automatically, but it brings every result change listed in [From 2.x to 8.0](#from-2x-to-80). The API is the same. Review that section before updating, or pin `8.4.0` until you have:
 
-Version 8.2 targets PHP 8.2. The public API and results are unchanged.
+```bash
+composer require pharaonic/php-dot-array:8.4.0
+```
 
-### Requirements
+Differences from `8.4.0` that are not in the 2.x list:
 
-- PHP `>=8.2 <8.3`. Stay on `8.1.x` while you run PHP 8.1.
-- `pharaonic/php-readable` `~8.2.0` (installed automatically).
-
-No code changes are needed.
-
-## From 8.0 to 8.1
-
-Version 8.1 targets PHP 8.1. The public API and results are unchanged.
-
-### Requirements
-
-- PHP `>=8.1 <8.2`. Stay on `8.0.x` while you run PHP 8.0.
-- `pharaonic/php-readable` `~8.1.0` (installed automatically).
-
-No code changes are needed.
+- `8.4.0` already deleted integer keys correctly, so section 10's `delete($int)` fix doesn't apply.
+- `dot()` accepts `null` and another `DotArray` again; `8.4.0` accepted arrays only.
+- PHP `>=8.4 <8.5` instead of `^8.4`. On PHP 8.5, Composer installs the `8.5.x` line.
 
 ## From 2.x to 8.0
 
