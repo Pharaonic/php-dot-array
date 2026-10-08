@@ -1,0 +1,51 @@
+name: Bug report
+description: Report something that is not working as expected.
+labels: [bug]
+body:
+  - type: input
+    id: package-version
+    attributes:
+      label: Package version
+      placeholder: '8.0.0'
+    validations:
+      required: true
+  - type: input
+    id: php-version
+    attributes:
+      label: PHP version
+      placeholder: '8.0'
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: The result you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: The result you got, plus any error messages or stack traces.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: The smallest array and path that show the problem.
+      render: php
+      placeholder: |
+        $dot = dot(['users' => [['name' => 'A']]]);
+
+        var_dump($dot->get('users.*.name'));
+    validations:
+      required: true
