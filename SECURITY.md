@@ -6,6 +6,7 @@ Security fixes are released for the latest version of each maintained release li
 
 | Version  | PHP | Supported          |
 |----------|-----|--------------------|
+| `8.2.x`  | 8.2 | :white_check_mark: |
 | `8.1.x`  | 8.1 | :white_check_mark: |
 | `8.0.x`  | 8.0 | :white_check_mark: |
 | `2.x`    | 8.0 | :x:                |
