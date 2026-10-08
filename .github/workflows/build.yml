@@ -1,49 +1,91 @@
-name: build
+name: Build
 
 on:
   push:
+    branches:
+      - '8.*.x'
+      - develop
+      - main
+    paths-ignore:
+      - 'README.md'
+      - 'docs/**'
+
   pull_request:
-  workflow_dispatch:  
-    inputs:
-      php_version:
-        description: 'PHP version to run'
-        required: false
-        default: '8.3'
+    branches:
+      - '8.*.x'
+      - develop
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  run:
-    runs-on: ${{ matrix.operating-system }}
+  php:
+    name: Resolve PHP versions
+    runs-on: ubuntu-latest
+    outputs:
+      versions: ${{ steps.php.outputs.versions }}
+
+    steps:
+      # Each "8.N.x" branch targets exactly PHP 8.N; any other branch uses the 8.0 baseline.
+      - name: Resolve PHP versions from branch
+        id: php
+        shell: bash
+        run: |
+          BRANCH="${GITHUB_BASE_REF:-${GITHUB_REF_NAME}}"
+
+          if [[ "${BRANCH}" =~ ^8\.[0-9]+\.x$ ]]; then
+            VERSIONS="[\"${BRANCH%.x}\"]"
+          else
+            VERSIONS='["8.0"]'
+          fi
+
+          echo "branch=${BRANCH} php=${VERSIONS}"
+          echo "versions=${VERSIONS}" >> "$GITHUB_OUTPUT"
+
+  tests:
+    name: PHP ${{ matrix.php }} - ${{ matrix.dependencies }}
+    needs: php
+    runs-on: ubuntu-latest
+
     strategy:
+      fail-fast: false
       matrix:
-        operating-system: [ubuntu-latest]
-        php-versions: ['8.0', '8.1', '8.2', '8.3', '8.4', '8.5']
-    name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
+        php: ${{ fromJSON(needs.php.outputs.versions) }}
+        dependencies:
+          - lowest
+          - highest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v7
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-versions }}
-          extensions: mbstring, intl
+          php-version: ${{ matrix.php }}
           coverage: none
+          tools: composer:v2
 
-      - name: Check PHP Version
-        run: php -v
-
-      - name: Check Composer Version
-        run: composer -V
-
-      - name: Check PHP Extensions
-        run: php -m
-
-      - name: Validate composer.json and composer.lock
-        run: composer validate
+      - name: Validate Composer
+        run: composer validate --strict
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
+        uses: ramsey/composer-install@v3
+        with:
+          dependency-versions: ${{ matrix.dependencies }}
 
-      - name: Run test suite
-        run: vendor/bin/phpunit
+      - name: Run tests
+        run: composer test
+
+      - name: PHPStan
+        run: composer analyse -- --no-progress
+
+      - name: Coding style
+        run: composer lint

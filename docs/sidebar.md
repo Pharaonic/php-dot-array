@@ -1,0 +1,17 @@
+- Getting Started
+  - [Overview](#overview)
+  - [Installation](#installation)
+- Usage
+  - [Basic Usage](#basic-usage)
+  - [Wildcards](#wildcards)
+  - [Paths & Escaping](#paths)
+  - [ArrayAccess & Interfaces](#array-access)
+  - [Reference Mode](#reference-mode)
+- API Reference
+  - [Methods](#api-reference)
+  - [Upgrading](#upgrading)
+- Examples
+  - [Use Cases](#examples)
+  - [Troubleshooting](#troubleshooting)
+- Community
+  - [Contributors](#contributors)
