@@ -1,7 +1,7 @@
 <p align="center"><a href="https://pharaonic.dev/packages/php/dot-array" target="_blank"><img src="https://raw.githubusercontent.com/Pharaonic/php-dot-array/develop/docs/cover.webp"></a></p>
 
 <p align="center">
-  <a href="https://php.net" target="_blank"><img src="https://img.shields.io/static/v1?label=PHP&message=8.1&color=blue&style=flat-square" alt="PHP Version : 8.1"></a>
+  <a href="https://php.net" target="_blank"><img src="https://img.shields.io/static/v1?label=PHP&message=8.2&color=blue&style=flat-square" alt="PHP Version : 8.2"></a>
   <img src="https://img.shields.io/static/v1?label=License&message=MIT&color=brightgreen&style=flat-square" alt="License">
   <img src="https://github.com/Pharaonic/php-dot-array/actions/workflows/build.yml/badge.svg" alt="Tests">
   <br>
