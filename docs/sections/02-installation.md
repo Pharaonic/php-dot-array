@@ -4,9 +4,9 @@ Install the package with Composer. There is nothing to register or configure.
 
 ### Requirements
 
-- PHP 8.3.x (each `8.x` release line targets the matching PHP version)
+- PHP 8.4.x (each `8.x` release line targets the matching PHP version)
 - `ext-mbstring`
-- `pharaonic/php-readable` ~8.3.0 (installed automatically)
+- `pharaonic/php-readable` ~8.4.0 (installed automatically)
 
 ### Composer Installation
 
