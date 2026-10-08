@@ -12,7 +12,7 @@ class WildcardTest extends TestCase
     /**
      * @return array<string, mixed>
      */
-    private function users(): array
+    private function userData(): array
     {
         return [
             'users' => [
@@ -25,7 +25,7 @@ class WildcardTest extends TestCase
     /**
      * @return array<string, mixed>
      */
-    private function groups(): array
+    private function groupData(): array
     {
         return [
             'groups' => [
@@ -39,7 +39,7 @@ class WildcardTest extends TestCase
 
     public function testGetReturnsOneEntryPerElement(): void
     {
-        $dot = new DotArray($this->users());
+        $dot = new DotArray($this->userData());
 
         $this->assertSame(['Ahmed', 'Sara'], $dot->get('users.*.name'));
         $this->assertSame([30, 25], $dot->get('users.*.profile.age'));
@@ -48,7 +48,7 @@ class WildcardTest extends TestCase
 
     public function testGetFillsMissingValuesWithDefault(): void
     {
-        $dot = new DotArray($this->users());
+        $dot = new DotArray($this->userData());
 
         $this->assertSame(['ahmed@example.com', null], $dot->get('users.*.email'));
         $this->assertSame(['ahmed@example.com', 'x'], $dot->get('users.*.email', 'x'));
@@ -66,7 +66,7 @@ class WildcardTest extends TestCase
 
     public function testGetNestedWildcardsFlattenIntoOneList(): void
     {
-        $dot = new DotArray($this->groups());
+        $dot = new DotArray($this->groupData());
 
         $this->assertSame(['A', 'B', 'C'], $dot->get('groups.*.users.*.name'));
         $this->assertSame(
@@ -155,7 +155,7 @@ class WildcardTest extends TestCase
 
     public function testHasRequiresEveryMatchedElementToHaveThePath(): void
     {
-        $dot = new DotArray($this->users());
+        $dot = new DotArray($this->userData());
 
         $this->assertTrue($dot->has('users.*.name'));
         $this->assertTrue($dot->has('users.*.profile.age'));
@@ -172,7 +172,7 @@ class WildcardTest extends TestCase
 
     public function testHasWithNestedWildcards(): void
     {
-        $dot = new DotArray($this->groups());
+        $dot = new DotArray($this->groupData());
 
         $this->assertTrue($dot->has('groups.*.users.*.name'));
         $this->assertFalse($dot->has('groups.*.users.*.email'));
@@ -199,7 +199,7 @@ class WildcardTest extends TestCase
 
     public function testSetUpdatesEveryElement(): void
     {
-        $dot = new DotArray($this->users());
+        $dot = new DotArray($this->userData());
         $dot->set('users.*.active', true);
 
         $this->assertSame([true, true], $dot->get('users.*.active'));
@@ -208,7 +208,7 @@ class WildcardTest extends TestCase
 
     public function testSetCreatesNestedKeysInsideEachElement(): void
     {
-        $dot = new DotArray($this->users());
+        $dot = new DotArray($this->userData());
         $dot->set('users.*.settings.theme', 'dark');
 
         $this->assertSame(['dark', 'dark'], $dot->get('users.*.settings.theme'));
@@ -216,7 +216,7 @@ class WildcardTest extends TestCase
 
     public function testSetWithNestedWildcards(): void
     {
-        $dot = new DotArray($this->groups());
+        $dot = new DotArray($this->groupData());
         $dot->set('groups.*.users.*.active', true);
 
         $this->assertSame([
@@ -257,7 +257,7 @@ class WildcardTest extends TestCase
 
     public function testDeleteRemovesTheKeyFromEveryElement(): void
     {
-        $dot = new DotArray($this->users());
+        $dot = new DotArray($this->userData());
 
         $this->assertTrue($dot->delete('users.*.profile'));
         $this->assertSame([
@@ -270,7 +270,7 @@ class WildcardTest extends TestCase
 
     public function testDeleteReturnsTrueWhenAnyValueWasDeleted(): void
     {
-        $dot = new DotArray($this->users());
+        $dot = new DotArray($this->userData());
 
         $this->assertTrue($dot->delete('users.*.email'));
         $this->assertFalse($dot->has('users.0.email'));
@@ -280,7 +280,7 @@ class WildcardTest extends TestCase
 
     public function testDeleteWithNestedWildcards(): void
     {
-        $dot = new DotArray($this->groups());
+        $dot = new DotArray($this->groupData());
 
         $this->assertTrue($dot->delete('groups.*.users.*.name'));
         $this->assertSame(['groups' => [['users' => [[], []]], ['users' => [[]]]]], $dot->all());
@@ -298,7 +298,7 @@ class WildcardTest extends TestCase
 
     public function testPullWithWildcard(): void
     {
-        $dot = new DotArray($this->users());
+        $dot = new DotArray($this->userData());
 
         $this->assertSame(['ahmed@example.com', null], $dot->pull('users.*.email'));
         $this->assertFalse($dot->has('users.0.email'));
@@ -306,7 +306,7 @@ class WildcardTest extends TestCase
 
     public function testCountWithWildcardCountsMatchedElements(): void
     {
-        $dot = new DotArray($this->groups());
+        $dot = new DotArray($this->groupData());
 
         $this->assertSame(3, $dot->count('groups.*.users.*.name'));
         $this->assertSame(0, $dot->count('groups.*.missing.*'));
