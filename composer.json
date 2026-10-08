@@ -30,7 +30,7 @@
         "pharaonic/php-readable": "~8.4.0"
     },
     "require-dev": {
-        "phpstan/phpstan": "^1.12 || ^2.0",
+        "phpstan/phpstan": "^2.0",
         "phpunit/phpunit": "^9.6",
         "squizlabs/php_codesniffer": "^3.13 || ^4.0"
     },
