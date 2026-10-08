@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## 8.5.1 - Unreleased
+## 8.5.1 - 2026-10-08
 
 The `8.5.x` line now runs the rebuilt 8.x path engine, with results identical to `8.4.1`. **`8.5.0` still had the 2.x engine, so this patch changes results for `8.5.0` users**: every change listed under [8.0.0](#800---2026-10-08) applies. Read [UPGRADE.md](UPGRADE.md#from-850-to-851) before updating.
 
